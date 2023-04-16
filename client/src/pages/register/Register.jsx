@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "./register.css";
 import { toast } from "react-toastify";
 import axios from "axios";
+import { userRegister } from "../../api/post";
 
 function Register() {
   const [username, setUsername] = useState("");
@@ -22,11 +23,7 @@ function Register() {
         throw new Error(
           "비밀번호가 너무 짧습니다. 여섯글자 이상으로 해주세요."
         );
-      await axios.post("/users/register", {
-        username,
-        email,
-        password,
-      });
+      await userRegister(username, email, password);
       navigate("/");
       toast.success("회원가입 되었습니다.");
     } catch (err) {
