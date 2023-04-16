@@ -1,7 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { UserContext } from "../../context/UserContext";
-import axios from "axios";
 import "./topbar.css";
 import { SearchContext } from "../../context/SearchContext";
 import { toast } from "react-toastify";

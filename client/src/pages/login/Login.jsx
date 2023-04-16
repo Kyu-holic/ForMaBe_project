@@ -4,6 +4,7 @@ import { UserContext } from "../../context/UserContext";
 import { toast } from "react-toastify";
 import axios from "axios";
 import "./login.css";
+import { userLogin } from "../../api/post";
 
 function Login() {
   const userRef = useRef();
@@ -15,11 +16,8 @@ function Login() {
     e.preventDefault();
     dispatch({ type: "LOGIN_START" });
     try {
-      const res = await axios.post("/users/login", {
-        username: userRef.current.value,
-        password: passwordRef.current.value,
-      });
-      dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
+      await userLogin(userRef, passwordRef);
+      dispatch({ type: "LOGIN_SUCCESS", payload: userRef, passwordRef });
       navigate("/");
       toast.success("로그인 되었습니다.");
     } catch (err) {

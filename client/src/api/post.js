@@ -6,5 +6,13 @@ export const getPostsBySearchText = async (searchText) => {
 };
 
 export const userLogout = async () => {
-  await axios.get("/users/logout")
-}
+  await axios.get("/users/logout");
+};
+
+export const userLogin = async (userRef, passwordRef) => {
+  await axios.post("/users/login", {
+    username: userRef.current.value,
+    password: passwordRef.current.value,
+  });
+  console.log(userRef)
+};
