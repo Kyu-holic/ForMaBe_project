@@ -1,0 +1,29 @@
+.header {
+  margin-top: 50px;
+  font-family: "Gamja Flower", cursive;
+}
+
+.headerTitles {
+  display: flex;
+  flex-direction: column;
+  color: #444;
+  align-items: center;
+}
+
+.headerTitleSm {
+  font-size: 20px;
+  position: absolute;
+  top: 13%;
+}
+.headerTitleLg {
+  font-size: 100px;
+  position: absolute;
+  top: 15%;
+}
+
+.headerImg {
+  width: 100%;
+  margin-top: 70px;
+  height: 100vh;
+  object-fit: cover;
+}
