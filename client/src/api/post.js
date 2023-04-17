@@ -14,7 +14,6 @@ export const userLogin = async (userRef, passwordRef) => {
     username: userRef.current.value,
     password: passwordRef.current.value,
   });
-  console.log(userRef)
 };
 
 export const userRegister = async(username, email, password)=>{

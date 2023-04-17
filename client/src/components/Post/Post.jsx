@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import ReactHtmlParser from "react-html-parser";
 import "./post.css";
+import styled from "@emotion/styled";
 
 function Post({ searchedPost }) {
   const html = searchedPost.desc;
@@ -10,15 +11,15 @@ function Post({ searchedPost }) {
   const result = dom.documentElement.textContent;
 
   return (
-    <div className="post">
+    <PostBlock>
       <Link to={`/post/${searchedPost._id}`} className="link">
         <img
           src={`http://localhost:5000/images/${searchedPost.photo}`}
           style={{
             width: "100%",
-            height: "300px",
+            height: "30rem",
             objectFit: "cover",
-            borderRadius: "10px",
+            borderRadius: "1rem",
           }}
         />
         <div className="postInfo">
@@ -29,8 +30,44 @@ function Post({ searchedPost }) {
         </div>
         <div className="postDesc">{ReactHtmlParser(result)}</div>
       </Link>
-    </div>
+    </PostBlock>
   );
 }
+
+const PostBlock = styled.div`
+  width: 50rem;
+  margin: 3rem 2.5rem 4rem 2.5rem;
+  font-family: "Gamja Flower", cursive;
+
+  .postInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .postTitle {
+    margin: 1.5rem;
+    font-size: 2.3rem;
+    cursor: pointer;
+  }
+
+  .postDate {
+    font-style: italic;
+    font-size: 1.5rem;
+    color: #999;
+  }
+
+  .postDesc {
+    color: #444;
+    font-size: 2rem;
+    line-height: 2.8rem;
+    margin-top: 1.5rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+  }
+`;
 
 export default Post;
