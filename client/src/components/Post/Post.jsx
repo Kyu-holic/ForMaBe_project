@@ -14,12 +14,7 @@ function Post({ searchedPost }) {
       <Link to={`/post/${searchedPost._id}`} className="link">
         <img
           src={`http://localhost:5000/images/${searchedPost.photo}`}
-          style={{
-            width: "100%",
-            height: "30rem",
-            objectFit: "cover",
-            borderRadius: "1rem",
-          }}
+          className="postImg"
         />
         <div className="postInfo">
           <h2 className="postTitle">{searchedPost.title}</h2>
@@ -42,6 +37,13 @@ const PostBlock = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+  }
+
+  .postImg {
+    width: 100%;
+    height: 30rem;
+    object-fit: cover;
+    border-radius: 1rem;
   }
 
   .postTitle {
@@ -68,6 +70,24 @@ const PostBlock = styled.div`
     -webkit-box-orient: vertical;
   }
 
+  @media (max-width: 800px) {
+    width: 100%;
+
+    // object-fit: contain 으로 하면 border-radius 가 이상하게 먹힘
+    .postImg {
+      width: 100%;
+      border-radius: 3rem;
+      object-fit: cover;
+    }
+
+    .postTitle {
+      font-size: 2.3rem;
+    }
+    .postDesc {
+      font-size: 1.8rem;
+      margin-top: 1rem;
+    }
+  }
 `;
 
 export default Post;
