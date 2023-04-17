@@ -3,8 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { useLocation, Link } from "react-router-dom";
 import ReactHtmlParser from "react-html-parser";
 import axios from "axios";
-import "./singlePost.css";
 import { UserContext } from "../../context/UserContext";
+import styled from "@emotion/styled";
 
 function SinglePost() {
   const location = useLocation();
@@ -33,7 +33,7 @@ function SinglePost() {
   }, [path]);
 
   return (
-    <div className="singlePost">
+    <SinglePostBlock>
       <div className="singlePostWrapper">
         <img
           className="singlePostImg"
@@ -64,8 +64,77 @@ function SinglePost() {
         </span>
       </div>
       <p className="singlePostDesc">{ReactHtmlParser(post.desc)}</p>
-    </div>
+    </SinglePostBlock>
   );
 }
+
+const SinglePostBlock = styled.div`
+  width: 130rem;
+  margin: auto;
+
+  font-size: 1.6rem;
+
+  h1 {
+    font-size: 3.2rem;
+  }
+  h2 {
+    font-size: 2.4rem;
+  }
+  h3 {
+    font-size: 1.873rem;
+  }
+
+  .singlePostImg {
+    width: 110rem;
+    height: 50rem;
+    object-fit: cover;
+    align-self: center;
+  }
+
+  .singlePostWrapper {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .singlePostTitle {
+    text-align: center;
+    margin: 1rem;
+  }
+
+  .singlePostEdit {
+    float: right;
+    font-size: 2rem;
+    justify-content: center;
+  }
+
+  .singlePostIcon {
+    color: rgb(224, 154, 25);
+    cursor: pointer;
+  }
+
+  .singlePostInfo {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 3rem;
+  }
+
+  .singlePostDesc {
+    color: #666;
+    line-height: 2;
+  }
+
+  .singlePostDesc h1 {
+    text-align: center;
+    color: dodgerblue;
+  }
+
+  .singlePostDesc img {
+    width: 50rem;
+    border-radius: 0.5rem;
+    margin: auto;
+    display: block;
+  }
+`;
 
 export default SinglePost;

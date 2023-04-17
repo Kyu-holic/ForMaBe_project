@@ -48,6 +48,7 @@ function About() {
 
 const AboutBlock = styled.div`
   display: flex;
+  font-size: 2rem;
   @media (max-width: 800px) {
     flex-direction: column;
   }

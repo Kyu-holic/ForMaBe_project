@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./register.css";
 import { toast } from "react-toastify";
 import { userRegister } from "../../api/post";
+import styled from "@emotion/styled";
 
 function Register() {
   const [username, setUsername] = useState("");
@@ -31,10 +31,10 @@ function Register() {
   };
 
   return (
-    <div className="register">
+    <RegisterBlock>
       <span className="registerTitle">Register</span>
       <form className="registerForm" onSubmit={handleSubmit}>
-        <label>Username</label>
+        <label className="registerInfo">Username</label>
         <input
           className="registerInput"
           type="text"
@@ -43,7 +43,7 @@ function Register() {
             setUsername(e.target.value);
           }}
         />
-        <label>Email</label>
+        <label className="registerInfo">Email</label>
         <input
           className="registerInput"
           type="text"
@@ -52,7 +52,7 @@ function Register() {
             setEmail(e.target.value);
           }}
         />
-        <label>Password</label>
+        <label className="registerInfo">Password</label>
         <input
           className="registerInput"
           type="password"
@@ -66,8 +66,63 @@ function Register() {
         </button>
       </form>
       <button className="registerLoginButton">Login</button>
-    </div>
+    </RegisterBlock>
   );
 }
+
+const RegisterBlock = styled.div`
+  height: calc(100vh - 5rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #f7f6f6;
+
+  .registerTitle {
+    font-size: 5rem;
+  }
+
+  .registerInfo {
+    font-size: 1.5rem;
+  }
+
+  .registerForm {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .registerForm > label {
+    margin: 1rem 0;
+  }
+
+  .registerInput {
+    padding: 1rem;
+    background-color: white;
+    border: none;
+  }
+
+  .registerButton {
+    margin-top: 2rem;
+    cursor: pointer;
+    background-color: lightcoral;
+    border: none;
+    color: white;
+    border-radius: 1rem;
+    padding: 1rem;
+    font-size: 1.6rem;
+  }
+
+  .registerLoginButton {
+    position: absolute;
+    font-size: 1.5rem;
+    top: 6rem;
+    right: 2rem;
+    background-color: teal;
+    padding: 1rem;
+    border-radius: 1rem;
+    color: white;
+  }
+`;
 
 export default Register;
