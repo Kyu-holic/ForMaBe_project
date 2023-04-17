@@ -92,7 +92,7 @@ function Topbar() {
 
 const TopbarBlock = styled.div`
   display: flex;
-  height: 60px;
+  height: 6rem;
   align-items: center;
   background-color: white;
   z-index: 999;
@@ -121,43 +121,43 @@ const TopbarBlock = styled.div`
   }
 
   .topListItems {
-    font-size: 18px;
+    font-size: 1.8rem;
     cursor: pointer;
-    margin-right: 20px;
+    margin-right: 2rem;
     font-weight: 300;
   }
 
   .topIcon {
-    margin-right: 10px;
-    font-size: 20px;
+    margin-right: 1rem;
+    font-size: 2rem;
     color: #444;
     cursor: pointer;
   }
 
   .profileImg {
-    width: 50px;
-    height: 50px;
+    width: 5rem;
+    height: 5rem;
     border-radius: 50%;
     object-fit: cover;
-    margin-right: 15px;
+    margin-right: 1.5rem;
   }
 
   .topSearchIcon {
-    font-size: 20px;
+    font-size: 2rem;
   }
 
   .search {
-    width: 250px;
+    width: 25rem;
     display: flex;
     align-items: center;
     background-color: rgba(211, 211, 211, 0.311);
-    border-radius: 10px;
-    padding: 5px;
+    border-radius: 1rem;
+    padding: 0.5rem;
   }
 
   .search-box {
-    width: 200px;
-    height: 30px;
+    width: 20rem;
+    height: 3rem;
     border: none;
     background: transparent;
   }

@@ -18,7 +18,7 @@ function Header() {
 }
 
 const HeaderBlock = styled.div`
-  margin-top: 50px;
+  margin-top: 5rem;
   font-family: "Gamja Flower", cursive;
 
   .headerTitles {
@@ -29,21 +29,49 @@ const HeaderBlock = styled.div`
   }
 
   .headerTitleSm {
-    font-size: 20px;
+    font-size: 2rem;
     position: absolute;
     top: 13%;
   }
   .headerTitleLg {
-    font-size: 100px;
+    font-size: 10rem;
     position: absolute;
     top: 15%;
   }
 
   .headerImg {
     width: 100%;
-    margin-top: 70px;
-    height: 100vh;
+    margin-top: 7rem;
     object-fit: cover;
+    height: 100rem;
+  }
+
+  @media (max-width: 80rem) {
+    .headerTitles {
+      display: flex;
+      flex-direction: column;
+      color: #444;
+      align-items: center;
+    }
+
+    .headerTitleSm {
+      font-size: 2.3rem;
+      position: absolute;
+      top: 13%;
+    }
+
+    .headerTitleLg {
+      font-size: 6rem;
+      position: absolute;
+      top: 17%;
+    }
+
+    .headerImg {
+      object-fit: contain;
+      width: 100%;
+      height: 100%;
+      margin-top: 5.6rem;
+    }
   }
 `;
 
