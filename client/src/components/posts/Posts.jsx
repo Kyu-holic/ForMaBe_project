@@ -1,15 +1,21 @@
 import React from "react";
 import Post from "../Post/Post";
-import "./posts.css";
+import styled from "@emotion/styled";
 
 function Posts({ searchedPosts }) {
   return (
-    <div className="posts">
+    <PostsBlock>
       {searchedPosts.map((searchedPost, index) => (
         <Post searchedPost={searchedPost} key={index} />
       ))}
-    </div>
+    </PostsBlock>
   );
 }
+
+const PostsBlock = styled.div`
+  flex: 9;
+  display: flex;
+  flex-wrap: wrap;
+`;
 
 export default Posts;

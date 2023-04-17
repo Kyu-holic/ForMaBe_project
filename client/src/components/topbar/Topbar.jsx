@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { UserContext } from "../../context/UserContext";
-import "./topbar.css";
+import styled from "@emotion/styled";
 import { SearchContext } from "../../context/SearchContext";
 import { toast } from "react-toastify";
 import { userLogout } from "../../api/post";
@@ -27,7 +27,7 @@ function Topbar() {
   }, []);
 
   return (
-    <div className="topBar">
+    <TopbarBlock>
       <div className="topLeft">
         <i className="topIcon fa-brands fa-square-facebook"></i>
         <i className="topIcon fa-brands fa-twitter"></i>
@@ -86,8 +86,81 @@ function Topbar() {
           />
         </div>
       </div>
-    </div>
+    </TopbarBlock>
   );
 }
+
+const TopbarBlock = styled.div`
+  display: flex;
+  height: 60px;
+  align-items: center;
+  background-color: white;
+  z-index: 999;
+  position: sticky;
+  top: 0;
+
+  .topLeft,
+  .topRight {
+    flex: 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  .topCenter {
+    flex: 6;
+  }
+
+  .topBarList {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+  }
+
+  .topListItems {
+    font-size: 18px;
+    cursor: pointer;
+    margin-right: 20px;
+    font-weight: 300;
+  }
+
+  .topIcon {
+    margin-right: 10px;
+    font-size: 20px;
+    color: #444;
+    cursor: pointer;
+  }
+
+  .profileImg {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 15px;
+  }
+
+  .topSearchIcon {
+    font-size: 20px;
+  }
+
+  .search {
+    width: 250px;
+    display: flex;
+    align-items: center;
+    background-color: rgba(211, 211, 211, 0.311);
+    border-radius: 10px;
+    padding: 5px;
+  }
+
+  .search-box {
+    width: 200px;
+    height: 30px;
+    border: none;
+    background: transparent;
+  }
+`;
 
 export default Topbar;

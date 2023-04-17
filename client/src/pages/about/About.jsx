@@ -8,7 +8,7 @@ function About() {
         className="aboutImg"
         src="https://images.unsplash.com/photo-1542037104857-ffbb0b9155fb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1054&q=80"
       />
-      <div className="aboutIntro" style={{ marginLeft: "30px" }}>
+      <div className="aboutIntro">
         <h1 className="aboutTitle">본 포스팅은 소정의 원고료를 지원받아... </h1>
         <h2 className="aboutTitle">
           저희 아기에게 써보니 OOOO 제품이 딱 맞더라구요!
@@ -49,9 +49,7 @@ function About() {
 const AboutBlock = styled.div`
   display: flex;
   font-size: 2rem;
-  @media (max-width: 800px) {
-    flex-direction: column;
-  }
+  border: 1px solid black;
 
   .aboutImg {
     width: 60rem;
@@ -63,6 +61,7 @@ const AboutBlock = styled.div`
 
   .aboutIntro {
     margin: 1rem 15rem;
+    margin-left: 3rem;
   }
 
   .aboutTitle {
@@ -73,6 +72,19 @@ const AboutBlock = styled.div`
 
   .aboutDesc {
     line-height: 1.9;
+  }
+
+  @media (max-width: 800px) {
+    flex-direction: column;
+    width: 100%;
+
+    .aboutImg {
+      /* width: 100%; */
+    }
+
+    .aboutIntro {
+      width: 100%
+    }
   }
 `;
 
