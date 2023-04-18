@@ -10,13 +10,10 @@ import SinglePost from "./pages/singlePost/SinglePost";
 import Write from "./pages/write/Write";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useMediaQuery } from "react-responsive";
 import "./styles/reset.css";
 
 function App() {
   const { user } = useContext(UserContext);
-  const isDesktopOrLaptop = useMediaQuery({ query: "(min-width:1224px)" });
-  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px" });
 
   return (
     <>

@@ -161,6 +161,30 @@ const TopbarBlock = styled.div`
     border: none;
     background: transparent;
   }
+
+  @media (max-width: 800px) {
+    width: 100%;
+
+    .topListItems {
+      font-size: 1rem;
+    }
+
+    .topIcon,
+    .profileImg {
+      display: none;
+    }
+
+    .topCenter,
+    .topRight {
+    }
+
+    .search {
+      width: 15rem;
+    }
+    .search-box{
+      width:100%
+    }
+  }
 `;
 
 export default Topbar;
