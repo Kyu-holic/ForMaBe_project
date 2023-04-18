@@ -135,6 +135,24 @@ const SinglePostBlock = styled.div`
     margin: auto;
     display: block;
   }
+  @media (max-width: 800px) {
+    width: 100%;
+    margin: 1rem 1rem;
+    /* border: 1px solid black; */
+
+    .singlePostImg {
+      width: 100%;
+      object-fit: contain;
+    }
+
+    .singlePostDesc img {
+      width: 100%;
+    }
+
+    .singlePostInfo{
+      margin: 0 1.5rem;
+    }
+  }
 `;
 
 export default SinglePost;
