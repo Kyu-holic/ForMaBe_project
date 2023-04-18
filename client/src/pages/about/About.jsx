@@ -51,6 +51,15 @@ const AboutBlock = styled.div`
   font-size: 2rem;
   /* border: 1px solid black; */
 
+  @font-face {
+    font-family: "SeoulNamsanM";
+    src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/SeoulNamsanM.woff")
+      format("woff");
+    font-weight: normal;
+    font-style: normal;
+  }
+  font-family: "SeoulNamsanM";
+
   .aboutImg {
     width: 60rem;
     height: 100%;
@@ -65,6 +74,7 @@ const AboutBlock = styled.div`
   }
 
   .aboutTitle {
+    font-size: 3rem;
     margin-top: 4rem;
     color: rgb(22, 160, 224);
     display: flex;

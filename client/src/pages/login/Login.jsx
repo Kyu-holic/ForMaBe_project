@@ -60,6 +60,7 @@ const Loginblock = styled.div`
   justify-content: center;
   align-items: center;
   background-color: #f7f6f6;
+  
 
   .loginTitle {
     font-size: 5rem;

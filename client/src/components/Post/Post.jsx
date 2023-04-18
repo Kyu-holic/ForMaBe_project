@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import ReactHtmlParser from "react-html-parser";
 import styled from "@emotion/styled";
@@ -31,7 +31,14 @@ function Post({ searchedPost }) {
 const PostBlock = styled.div`
   width: 50rem;
   margin: 3rem 2.5rem 4rem 2.5rem;
-  font-family: "Gamja Flower", cursive;
+  @font-face {
+    font-family: "SeoulNamsanM";
+    src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/SeoulNamsanM.woff")
+      format("woff");
+    font-weight: normal;
+    font-style: normal;
+  }
+  font-family: "SeoulNamsanM";
 
   .postInfo {
     display: flex;
