@@ -136,7 +136,7 @@ const SinglePostBlock = styled.div`
     display: block;
   }
   @media (max-width: 800px) {
-    width: 100%;
+    width: 90%;
     margin: 1rem 1rem;
     /* border: 1px solid black; */
 

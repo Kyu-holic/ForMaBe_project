@@ -49,7 +49,7 @@ function About() {
 const AboutBlock = styled.div`
   display: flex;
   font-size: 2rem;
-  border: 1px solid black;
+  /* border: 1px solid black; */
 
   .aboutImg {
     width: 60rem;
@@ -78,12 +78,27 @@ const AboutBlock = styled.div`
     flex-direction: column;
     width: 100%;
 
+    font-size: 1.6rem;
+
+    h1 {
+      font-size: 3.2rem;
+    }
+    h2 {
+      font-size: 2.4rem;
+    }
+    h3 {
+      font-size: 1.873rem;
+    }
+
     .aboutImg {
-      /* width: 100%; */
+      width: 90%;
+      object-fit: contain;
+      margin: auto;
     }
 
     .aboutIntro {
-      width: 100%
+      margin: auto;
+      width: 90%;
     }
   }
 `;
