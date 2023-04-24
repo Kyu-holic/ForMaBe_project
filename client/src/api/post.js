@@ -10,16 +10,16 @@ export const userLogout = async () => {
 };
 
 export const userLogin = async (userRef, passwordRef) => {
-  await axios.post("/users/login", {
+  return await axios.post("/users/login", {
     username: userRef.current.value,
     password: passwordRef.current.value,
   });
 };
 
-export const userRegister = async(username, email, password)=>{
-  await axios.post("/users/register", {
-    username,
-    email,
-    password
-  })
-}
+// export const userRegister = async(username, email, password)=>{
+//   await axios.post("/users/register", {
+//     username,
+//     email,
+//     password
+//   })
+// }

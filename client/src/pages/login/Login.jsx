@@ -15,8 +15,8 @@ function Login() {
     e.preventDefault();
     dispatch({ type: "LOGIN_START" });
     try {
-      await userLogin(userRef, passwordRef);
-      dispatch({ type: "LOGIN_SUCCESS", payload: userRef, passwordRef });
+      const res = await userLogin(userRef, passwordRef);
+      dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
       navigate("/");
       toast.success("로그인 되었습니다.");
     } catch (err) {
@@ -60,7 +60,6 @@ const Loginblock = styled.div`
   justify-content: center;
   align-items: center;
   background-color: #f7f6f6;
-  
 
   .loginTitle {
     font-size: 5rem;
