@@ -1,7 +1,6 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Topbar from "./components/topbar/Topbar";
-import { UserContext } from "./context/UserContext";
 import About from "./pages/about/About";
 import Home from "./pages/home/Home";
 import Login from "./pages/login/Login";
@@ -11,9 +10,10 @@ import Write from "./pages/write/Write";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./styles/reset.css";
+import { useSelector } from "react-redux";
 
 function App() {
-  const { user } = useContext(UserContext);
+  const { user } = useSelector((state) => state.auth);
 
   return (
     <>
