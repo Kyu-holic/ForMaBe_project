@@ -9,12 +9,12 @@ export const userLogout = async () => {
   await axios.get("/users/logout");
 };
 
-export const userLogin = async (userRef, passwordRef) => {
-  return await axios.post("/users/login", {
-    username: userRef.current.value,
-    password: passwordRef.current.value,
-  });
-};
+// export const userLogin = async (userRef, passwordRef) => {
+//   return await axios.post("/users/login", {
+//     username: userRef.current.value,
+//     password: passwordRef.current.value,
+//   });
+// };
 
 // export const userRegister = async(username, email, password)=>{
 //   await axios.post("/users/register", {

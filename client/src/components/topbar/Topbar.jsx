@@ -1,22 +1,27 @@
 import React, { useContext, useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { UserContext } from "../../context/UserContext";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "@emotion/styled";
 import { SearchContext } from "../../context/SearchContext";
 import { toast } from "react-toastify";
-import { userLogout } from "../../api/post";
+import { useSelector, useDispatch } from "react-redux";
+import { logout, reset } from "../../auth/authSlice";
 
 function Topbar() {
-  const { user, dispatch } = useContext(UserContext);
-  const { posts, copy, setSearchKeyword } = useContext(SearchContext);
+  const { setSearchKeyword } = useContext(SearchContext);
+
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { user } = useSelector((state) => state.auth);
+  console.log(user)
 
   const onSearchHandler = (e) => {
     setSearchKeyword(e.target.value);
   };
 
   const onLogoutHandler = () => {
-    dispatch({ type: "LOGOUT" });
-    userLogout();
+    dispatch(logout());
+    dispatch(reset());
+    navigate("/");
     toast.success("로그아웃 되었습니다.");
   };
 
@@ -181,8 +186,8 @@ const TopbarBlock = styled.div`
     .search {
       width: 15rem;
     }
-    .search-box{
-      width:100%
+    .search-box {
+      width: 100%;
     }
   }
 `;
