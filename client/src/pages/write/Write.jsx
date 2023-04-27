@@ -1,9 +1,9 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Editor from "../../components/editor/Editor";
-import { UserContext } from "../../context/UserContext";
+import { useSelector } from "react-redux";
 import axios from "axios";
-import "./write.css";
+import styled from "@emotion/styled";
 
 function Write() {
   const [title, setTitle] = useState("");
@@ -11,7 +11,9 @@ function Write() {
   const [image, setImage] = useState(null);
   const [file, setFile] = useState(null);
   const [imgSrc, setImgSrc] = useState(null);
-  const { user } = useContext(UserContext);
+
+  const { user } = useSelector((state) => state.auth);
+
   const navigate = useNavigate();
 
   const imageSelectHandler = async (e) => {
@@ -52,7 +54,7 @@ function Write() {
   const previewImages = <img src={imgSrc} className="writeImg" />;
 
   return (
-    <div className="write">
+    <WriteBlock>
       {file && <div className="previewImg-box">{previewImages}</div>}
 
       <form className="writeForm" onSubmit={submitHandler}>
@@ -88,8 +90,76 @@ function Write() {
           등록
         </button>
       </form>
-    </div>
+    </WriteBlock>
   );
 }
+
+const WriteBlock = styled.div`
+  padding-top: 50px;
+
+  .writeForm {
+    position: relative;
+  }
+
+  .previewImg-box {
+    display: flex;
+    justify-content: center;
+  }
+
+  .writeImg {
+    display: flex;
+    flex-wrap: wrap;
+    width: 600px;
+    height: 300px;
+    border-radius: 10px;
+  }
+
+  .writeFormGroup {
+    margin-left: 150px;
+    display: flex;
+    align-items: center;
+    margin-top: 30px;
+  }
+
+  .writeIcon {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    border: 1px solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    color: gray;
+  }
+
+  .writeInput {
+    font-size: 30px;
+    border: none;
+    padding: 20px;
+    width: 70vw;
+  }
+
+  .writeInput:focus {
+    outline: none;
+  }
+
+  .writeText {
+    font-size: 20px;
+  }
+
+  .writeSubmit {
+    position: absolute;
+    top: 20px;
+    right: 50px;
+    color: white;
+    background-color: teal;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+`;
 
 export default Write;
