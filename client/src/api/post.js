@@ -5,8 +5,10 @@ export const getPostsBySearchText = async (searchText) => {
   return res.data;
 };
 
-export const userLogout = async () => {
-  await axios.get("/users/logout");
+export const deletePost = async (path, user) => {
+  await axios.delete(`/posts/${path}`, {
+    data: { username: user.username },
+  });
 };
 
 // export const userLogin = async (userRef, passwordRef) => {

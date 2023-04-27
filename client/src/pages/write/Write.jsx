@@ -95,7 +95,7 @@ function Write() {
 }
 
 const WriteBlock = styled.div`
-  padding-top: 50px;
+  padding-top: 5rem;
 
   .writeForm {
     position: relative;
@@ -109,34 +109,34 @@ const WriteBlock = styled.div`
   .writeImg {
     display: flex;
     flex-wrap: wrap;
-    width: 600px;
-    height: 300px;
-    border-radius: 10px;
+    width: 60rem;
+    height: 30rem;
+    border-radius: 1rem;
   }
 
   .writeFormGroup {
-    margin-left: 150px;
+    margin-left: 15rem;
     display: flex;
     align-items: center;
-    margin-top: 30px;
+    margin-top: 3rem;
   }
 
   .writeIcon {
-    width: 25px;
-    height: 25px;
+    width: 2.5rem;
+    height: 2.5rem;
     border-radius: 50%;
-    border: 1px solid;
+    border: 0.1rem solid;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 20px;
+    font-size: 2rem;
     color: gray;
   }
 
   .writeInput {
-    font-size: 30px;
+    font-size: 3rem;
     border: none;
-    padding: 20px;
+    padding: 2rem;
     width: 70vw;
   }
 
@@ -145,20 +145,20 @@ const WriteBlock = styled.div`
   }
 
   .writeText {
-    font-size: 20px;
+    font-size: 2rem;
   }
 
   .writeSubmit {
     position: absolute;
-    top: 20px;
-    right: 50px;
+    top: 2rem;
+    right: 5rem;
     color: white;
     background-color: teal;
-    padding: 10px;
+    padding: 1rem;
     border: none;
-    border-radius: 10px;
+    border-radius: 1rem;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 1.6rem;
   }
 `;
 

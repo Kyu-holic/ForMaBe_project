@@ -3,21 +3,25 @@ import { useNavigate } from "react-router-dom";
 import { useLocation, Link } from "react-router-dom";
 import ReactHtmlParser from "react-html-parser";
 import axios from "axios";
-import { UserContext } from "../../context/UserContext";
 import styled from "@emotion/styled";
+import { useDispatch, useSelector } from "react-redux";
+import { deletePost } from "../../post/postSlice";
 
 function SinglePost() {
   const location = useLocation();
   const navigate = useNavigate();
   const path = location.pathname.split("/")[2];
   const [post, setPost] = useState("");
-  const { user } = useContext(UserContext);
+  const { user } = useSelector((state) => state.auth);
+
+  const dispatch = useDispatch();
 
   const onDeleteHandler = async () => {
     try {
-      await axios.delete(`/posts/${path}`, {
-        data: { username: user.username },
-      });
+      // await axios.delete(`/posts/${path}`, {
+      //   data: { username: user.username },
+      // });
+      dispatch(deletePost());
       navigate("/");
     } catch (err) {
       console.log(err);
@@ -149,7 +153,7 @@ const SinglePostBlock = styled.div`
       width: 100%;
     }
 
-    .singlePostInfo{
+    .singlePostInfo {
       margin: 0 1.5rem;
     }
   }
