@@ -21,7 +21,11 @@ function SinglePost() {
       // await axios.delete(`/posts/${path}`, {
       //   data: { username: user.username },
       // });
-      dispatch(deletePost());
+      dispatch(
+        deletePost({
+          id: path,
+        })
+      );
       navigate("/");
     } catch (err) {
       console.log(err);

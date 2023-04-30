@@ -12,7 +12,7 @@ function Topbar() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
-  console.log(user)
+  console.log(user);
 
   const onSearchHandler = (e) => {
     setSearchKeyword(e.target.value);
@@ -30,6 +30,8 @@ function Topbar() {
       window.scrollTo(0, 0);
     };
   }, []);
+
+  console.log("user :", user);
 
   return (
     <TopbarBlock>
@@ -51,8 +53,6 @@ function Topbar() {
             <Link className="link" to="/write">
               <li className="topListItems">WRITE</li>
             </Link>
-          ) : user === null || user.role !== 1 ? (
-            <p></p>
           ) : (
             <p></p>
           )}

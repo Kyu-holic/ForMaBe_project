@@ -34,10 +34,8 @@ export const login = createAsyncThunk("/user/login", async (user, thunkAPI) => {
   try {
     return await authService.login(user);
   } catch (err) {
-    const message =
-      (err.response && err.response.data && err.response.data.message) ||
-      err.message ||
-      err.toString();
+    console.log("err:", err);
+    const message = err?.response?.data?.err || err.message || err.toString();
     return thunkAPI.rejectWithValue(message);
   }
 });

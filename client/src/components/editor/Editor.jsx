@@ -35,7 +35,7 @@ function WriteEditor({ setDesc }) {
       <Editor
         previewStyle="tab"
         height="60rem"
-        width="150rem"
+        // width="150rem"
         initialEditType="markdown"
         useCommandShortcut={true}
         language="ko-KR"

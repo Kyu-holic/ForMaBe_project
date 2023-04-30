@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const User = require("../models/User");
 const Post = require("../models/Post");
+const { auth } = require("../middlewares/auth");
 
 // CREATE POST
 router.post("/", async (req, res) => {
@@ -38,10 +39,11 @@ router.put("/:id", async (req, res) => {
 });
 
 // DELETE POST
-router.delete("/:id", async (req, res) => {
+router.delete("/:id", auth, async (req, res) => {
   try {
+    console.log("req.username:", req.cookies.x_auth);
     const post = await Post.findById(req.params.id);
-    if (post.username === req.body.username) {
+    if (post.username === req.user.username) {
       await post.delete();
       res.status(200).json("글이 삭제 되었습니다.");
     } else {
