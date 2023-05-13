@@ -5,9 +5,11 @@ import { SearchContext } from "../../context/SearchContext";
 import { toast } from "react-toastify";
 import { useSelector, useDispatch } from "react-redux";
 import { logout, reset } from "../../auth/authSlice";
+import { setKeyword } from "../../post/postSlice";
+import postReducer from "../../post/postSlice";
 
 function Topbar() {
-  const { setSearchKeyword } = useContext(SearchContext);
+  // const { setSearchKeyword } = useContext(SearchContext);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -15,7 +17,9 @@ function Topbar() {
   console.log(user);
 
   const onSearchHandler = (e) => {
-    setSearchKeyword(e.target.value);
+    // setSearchKeyword(e.target.value);
+    console.log("postReducer", postReducer);
+    dispatch(setKeyword(e.target.value));
   };
 
   const onLogoutHandler = () => {

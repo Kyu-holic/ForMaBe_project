@@ -74,12 +74,16 @@ router.get("/", async (req, res) => {
     // 예를 들어서 req.query.user라고 했으면 아래처럼 해야함
     // http://localhost:5000/api/posts/?user=test1
     const username = req.query.user;
+    const keyword = req.query.keyword;
     // posts는 변경될 수 있으므로 const가 아닌 let으로
     let posts;
     if (username) {
-      posts = await Post.find({ username });
+      posts = await Post.find({
+        username,
+        title: { $regex: ".*" + keyword + ".*" },
+      });
     } else {
-      posts = await Post.find();
+      posts = await Post.find({ title: { $regex: ".*" + keyword + ".*" } });
     }
     res.status(200).json(posts);
   } catch (err) {

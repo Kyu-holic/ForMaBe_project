@@ -1,6 +1,8 @@
 import axios from "axios";
+import { getPostsBySearchText } from "../api/post";
 
 const DELETE_URL = "/posts/";
+const UPLOAD_URL = "/posts";
 
 //delete post
 const postDelete = async (postData) => {
@@ -9,8 +11,20 @@ const postDelete = async (postData) => {
   console.log(response.data);
 };
 
+//upload post
+const postUpload = async (postData) => {
+  const response = await axios.post(UPLOAD_URL);
+  console.log(response.data);
+};
+
+const postRead = async (search) => {
+  return await getPostsBySearchText(search);
+};
+
 const postService = {
   postDelete,
+  postUpload,
+  postRead,
 };
 
 export default postService;

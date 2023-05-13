@@ -53,7 +53,7 @@ userSchema.methods.generateToken = function (cb) {
 };
 
 userSchema.statics.findByToken = function (token, cb) {
-  // var user = this;
+  var user = this;
   console.log("static user:", user);
 
   // 토큰을 decode 한다.
@@ -62,7 +62,7 @@ userSchema.statics.findByToken = function (token, cb) {
     // 클라이언트에서 가져온 token과  DB에 보관된 token이 일치한지 확인
 
     user.findOne({ _id: decoded, token: token }, function (err) {
-      if (err) return cb(err);
+      if (err) return cb(err)
       cb(null);
     });
   });

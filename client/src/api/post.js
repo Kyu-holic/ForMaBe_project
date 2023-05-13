@@ -1,7 +1,9 @@
 import axios from "axios";
 
 export const getPostsBySearchText = async (searchText) => {
-  const res = await axios.get(`/posts/${searchText}`);
+  const res = await axios.get(`/posts`, {
+    params: { keyword: searchText },
+  });
   return res.data;
 };
 
