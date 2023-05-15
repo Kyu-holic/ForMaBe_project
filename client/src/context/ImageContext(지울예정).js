@@ -1,23 +1,23 @@
-import React, { createContext, useState, useEffect } from "react";
-import axios from "axios";
+// import React, { createContext, useState, useEffect } from "react";
+// import axios from "axios";
 
-export const ImageContext = createContext();
+// export const ImageContext = createContext();
 
-export const ImageProvider = ({ children }) => {
-  const [images, setImages] = useState([]);
+// export const ImageProvider = ({ children }) => {
+//   const [images, setImages] = useState([]);
 
-  useEffect(() => {
-    axios
-      .get("/images")
-      .then((result) => {
-        setImages((prevData) => [...prevData, ...result.data]);
-      })
-      .catch((err) => console.log(err));
-  }, []);
+//   useEffect(() => {
+//     axios
+//       .get("/images")
+//       .then((result) => {
+//         setImages((prevData) => [...prevData, ...result.data]);
+//       })
+//       .catch((err) => console.log(err));
+//   }, []);
 
-  return (
-    <ImageContext.Provider value={[images, setImages]}>
-      {children}
-    </ImageContext.Provider>
-  );
-};
+//   return (
+//     <ImageContext.Provider value={[images, setImages]}>
+//       {children}
+//     </ImageContext.Provider>
+//   );
+// };
