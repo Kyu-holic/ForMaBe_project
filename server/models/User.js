@@ -57,14 +57,12 @@ userSchema.statics.findByToken = function (token, cb) {
   console.log("static user:", user);
 
   // 토큰을 decode 한다.
-  jwt.verify(token, "secretToken", function (err, decoded) {
+  jwt.verify(token, "secretToken", async function (err, decoded) {
     // 유저 아이디를 이용해서 유저를 찾은 다음에
     // 클라이언트에서 가져온 token과  DB에 보관된 token이 일치한지 확인
-
-    user.findOne({ _id: decoded, token: token }, function (err) {
-      if (err) return cb(err)
-      cb(null);
-    });
+    console.log("decoded", decoded);
+    const currentUser = await user.findOne({ _id: decoded });
+    cb(null, currentUser);
   });
 };
 

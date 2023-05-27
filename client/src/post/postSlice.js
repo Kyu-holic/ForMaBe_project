@@ -29,6 +29,7 @@ export const deletePost = createAsyncThunk(
   "/posts/:id",
   async (post, thunkAPI) => {
     try {
+      console.log("deletePost");
       return await postService.postDelete(post);
     } catch (err) {
       const message =

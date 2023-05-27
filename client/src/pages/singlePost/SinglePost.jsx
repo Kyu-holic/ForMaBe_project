@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useLocation, Link } from "react-router-dom";
 import ReactHtmlParser from "react-html-parser";
 import axios from "axios";
@@ -14,6 +14,7 @@ function SinglePost() {
   const [post, setPost] = useState("");
   const { user } = useSelector((state) => state.auth);
 
+
   const dispatch = useDispatch();
 
   const onDeleteHandler = async () => {
@@ -21,6 +22,7 @@ function SinglePost() {
       // await axios.delete(`/posts/${path}`, {
       //   data: { username: user.username },
       // });
+      console.log("delete");
       dispatch(
         deletePost({
           id: path,

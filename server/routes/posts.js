@@ -43,6 +43,8 @@ router.delete("/:id", auth, async (req, res) => {
   try {
     console.log("req.username:", req.cookies.x_auth);
     const post = await Post.findById(req.params.id);
+    console.log("post.username", post.username);
+    console.log("req.user.username", req.user.username);
     if (post.username === req.user.username) {
       await post.delete();
       res.status(200).json("글이 삭제 되었습니다.");
@@ -88,7 +90,7 @@ router.get("/", async (req, res) => {
         $or: [{ title: { $regex: keyword } }, { desc: { $regex: keyword } }],
       });
 
-      console.log("posts", posts);
+      // console.log("posts", posts);
     }
     res.status(200).json(posts);
   } catch (err) {

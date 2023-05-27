@@ -8,6 +8,7 @@ export const getPostsBySearchText = async (searchText) => {
 };
 
 export const deletePost = async (path, user) => {
+  console.log("path", path);
   await axios.delete(`/posts/${path}`, {
     data: { username: user.username },
   });

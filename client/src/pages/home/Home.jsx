@@ -13,7 +13,7 @@ function Home() {
   // const { search } = useLocation();
 
   const { posts, keyword } = useSelector((state) => state.post);
-  console.log(posts);
+  // console.log(posts);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -22,9 +22,16 @@ function Home() {
     //   setSearchedPosts(postsResponse);
     // };
     // fetchPosts();
-    console.log("before Dispatch: ");
+    // console.log("before Dispatch: ");
     // console.log("keyword:", keyword.payload);
-    dispatch(getPost(keyword.payload));
+    // setTimeout을 통해 delay 이후에 debouncedValue를 얻습니다.
+    const timer = setTimeout(() => {
+      dispatch(getPost(keyword.payload));
+    }, 1000);
+
+    return () => {
+      clearTimeout(timer); // 이 전의 timer를 clear합니다.
+    };
   }, [keyword.payload]);
 
   return (

@@ -11,6 +11,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./styles/reset.css";
 import { useSelector } from "react-redux";
+import Edit from "./pages/write/Edit";
 
 function App() {
   const { user } = useSelector((state) => state.auth);
@@ -24,6 +25,7 @@ function App() {
         <Route path="/register" element={user ? <Home /> : <Register />} />
         <Route path="/login" element={user ? <Home /> : <Login />} />
         <Route path="/write" element={user ? <Write /> : <Register />} />
+        <Route path="/write/:id" element={user ? <Edit /> : <Register />} />
         <Route path="/post/:postId" element={<SinglePost />} />
         <Route path="/about" element={<About />} />
       </Routes>

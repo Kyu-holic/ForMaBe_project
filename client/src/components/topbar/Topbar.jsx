@@ -14,11 +14,11 @@ function Topbar() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
-  console.log(user);
+  // console.log(user);
 
   const onSearchHandler = (e) => {
     // setSearchKeyword(e.target.value);
-    console.log("postReducer", postReducer);
+    // console.log("postReducer", postReducer);
     dispatch(setKeyword(e.target.value));
   };
 
@@ -35,7 +35,7 @@ function Topbar() {
     };
   }, []);
 
-  console.log("user :", user);
+  // console.log("user :", user);
 
   return (
     <TopbarBlock>
