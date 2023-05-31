@@ -4,6 +4,7 @@ import Editor from "../../components/editor/Editor";
 import { useSelector } from "react-redux";
 import axios from "axios";
 import styled from "@emotion/styled";
+import Swal from "sweetalert2";
 
 function Write() {
   const [title, setTitle] = useState("");
@@ -43,9 +44,23 @@ function Write() {
       }
     }
     try {
-      const res = await axios.post("/posts", newPost);
-      navigate("/");
-      console.log(res);
+      // const res = await axios.post("/posts", newPost);
+      Swal.fire({
+        title: "글을 등록 하시겠습니까?",
+        // text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "네, 등록하겠습니다.",
+        cancelButtonText: "아니오, 더 작성할께요.",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          axios.post("/posts", newPost);
+          Swal.fire("글이 등록되었습니다.");
+          navigate("/");
+        }
+      });
     } catch (err) {
       console.log(err);
     }

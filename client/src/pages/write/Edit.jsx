@@ -48,7 +48,6 @@ function Edit() {
       }
     }
     try {
-      const res = await axios.put(`/posts/${id}`, editPost);
       Swal.fire({
         title: "글을 수정 하시겠습니까?",
         // text: "You won't be able to revert this!",
@@ -60,11 +59,11 @@ function Edit() {
         cancelButtonText: "아니오",
       }).then((result) => {
         if (result.isConfirmed) {
+          axios.put(`/posts/${id}`, editPost);
           Swal.fire("글이 수정되었습니다.");
           navigate("/");
         }
       });
-      console.log(res);
     } catch (err) {
       console.log(err);
     }
