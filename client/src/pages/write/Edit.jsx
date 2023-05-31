@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import Editor from "../../components/editor/Editor";
 import { useSelector } from "react-redux";
 import axios from "axios";
@@ -11,6 +11,9 @@ function Edit() {
   const [image, setImage] = useState(null);
   const [file, setFile] = useState(null);
   const [imgSrc, setImgSrc] = useState(null);
+
+  const location = useLocation();
+  const path = location.pathname.split("/")[2];
 
   const { user } = useSelector((state) => state.auth);
 
@@ -28,9 +31,9 @@ function Edit() {
     fileReader.onload = (e) => setImgSrc(e.target.result);
   };
 
-  const submitHandler = async (e) => {
+  const onEditHandler = async (e) => {
     e.preventDefault();
-    const newPost = {
+    const editPost = {
       title,
       desc,
       username: user.username,
@@ -40,14 +43,14 @@ function Edit() {
       formData.append("file", file);
       try {
         const res = await axios.post("/images/upload", formData);
-        newPost.photo = res.data.key;
+        editPost.photo = res.data.key;
         console.log({ res: res });
       } catch (err) {
         console.log(err);
       }
     }
     try {
-      const res = await axios.post("/posts", newPost);
+      const res = await axios.put(`/posts/${path}`, editPost);
       navigate("/");
       console.log(res);
     } catch (err) {
@@ -79,7 +82,7 @@ function Edit() {
     <WriteBlock>
       {file && <div className="previewImg-box">{previewImages}</div>}
 
-      <form className="writeForm" onSubmit={submitHandler}>
+      <form className="writeForm" onSubmit={onEditHandler}>
         <div className="writeFormGroup">
           <label htmlFor="fileInput">
             <i className="writeIcon fa-solid fa-plus"></i>
@@ -112,7 +115,7 @@ function Edit() {
           )}
         </div>
         <button className="writeSubmit" type="submit">
-          등록
+          수정
         </button>
       </form>
     </WriteBlock>

@@ -20,6 +20,7 @@ router.post("/", async (req, res) => {
 router.put("/:id", async (req, res) => {
   try {
     const post = await Post.findById(req.params.id);
+    // console.log("수정 완성");
     if (post.username === req.body.username) {
       const updatedPost = await Post.findByIdAndUpdate(
         req.params.id,
@@ -41,10 +42,10 @@ router.put("/:id", async (req, res) => {
 // DELETE POST
 router.delete("/:id", auth, async (req, res) => {
   try {
-    console.log("req.username:", req.cookies.x_auth);
+    // console.log("req.username:", req.cookies.x_auth);
     const post = await Post.findById(req.params.id);
-    console.log("post.username", post.username);
-    console.log("req.user.username", req.user.username);
+    // console.log("post.username", post.username);
+    // console.log("req.user.username", req.user.username);
     if (post.username === req.user.username) {
       await post.delete();
       res.status(200).json("글이 삭제 되었습니다.");
