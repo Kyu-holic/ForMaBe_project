@@ -4,7 +4,7 @@ import Header from "../../components/header/Header";
 import Posts from "../../components/posts/Posts";
 import "./home.css";
 import { useDispatch, useSelector } from "react-redux";
-import { SearchContext } from "../../context/SearchContext";
+import { SearchContext } from "../../context/SearchContext(지울예정)";
 import { getPostsBySearchText } from "../../api/post";
 import { getPost } from "../../post/postSlice";
 

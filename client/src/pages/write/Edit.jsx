@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Editor from "../../components/editor/Editor";
 import { useSelector } from "react-redux";
 import axios from "axios";
 import styled from "@emotion/styled";
+import Swal from "sweetalert2";
 
 function Edit() {
   const [title, setTitle] = useState("");
@@ -12,16 +13,13 @@ function Edit() {
   const [file, setFile] = useState(null);
   const [imgSrc, setImgSrc] = useState(null);
 
-  const location = useLocation();
-  const path = location.pathname.split("/")[2];
-
   const { user } = useSelector((state) => state.auth);
 
   const navigate = useNavigate();
 
   const { id } = useParams();
 
-  console.log("id:", id);
+  // console.log("id:", id);
 
   const imageSelectHandler = async (e) => {
     const imageFile = e.target.files[0];
@@ -50,8 +48,22 @@ function Edit() {
       }
     }
     try {
-      const res = await axios.put(`/posts/${path}`, editPost);
-      navigate("/");
+      const res = await axios.put(`/posts/${id}`, editPost);
+      Swal.fire({
+        title: "글을 수정 하시겠습니까?",
+        // text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "네, 수정하겠습니다.",
+        cancelButtonText: "아니오",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire("글이 수정되었습니다.");
+          navigate("/");
+        }
+      });
       console.log(res);
     } catch (err) {
       console.log(err);

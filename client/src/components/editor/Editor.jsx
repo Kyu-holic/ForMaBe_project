@@ -7,10 +7,11 @@ import colorSyntax from "@toast-ui/editor-plugin-color-syntax";
 import "tui-color-picker/dist/tui-color-picker.css";
 import "@toast-ui/editor-plugin-color-syntax/dist/toastui-editor-plugin-color-syntax.css";
 
+
 function WriteEditor({ setDesc, value }) {
   const editorRef = useRef();
 
-  console.log("value:", value);
+  // console.log("value:", value);
 
   const onChange = () => {
     const data = editorRef.current.getInstance().getHTML();
