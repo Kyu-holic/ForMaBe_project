@@ -1,12 +1,10 @@
-import React, { useContext, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styled from "@emotion/styled";
-import { SearchContext } from "../../context/SearchContext(지울예정)";
 import { toast } from "react-toastify";
 import { useSelector, useDispatch } from "react-redux";
 import { logout, reset } from "../../auth/authSlice";
 import { setKeyword } from "../../post/postSlice";
-import postReducer from "../../post/postSlice";
 
 function Topbar() {
   // const { setSearchKeyword } = useContext(SearchContext);

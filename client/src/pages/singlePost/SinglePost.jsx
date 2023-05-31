@@ -6,6 +6,8 @@ import axios from "axios";
 import styled from "@emotion/styled";
 import { useDispatch, useSelector } from "react-redux";
 import { deletePost } from "../../post/postSlice";
+import Swal from "sweetalert2";
+import { toast } from "react-toastify";
 
 function SinglePost() {
   const location = useLocation();
@@ -18,9 +20,21 @@ function SinglePost() {
 
   const onEditHandler = async () => {
     try {
-      console.log("edit");
       // dispatch 만들기
-      navigate(`/write/${path}`);
+      Swal.fire({
+        title: "글을 수정하겠습니까?",
+        // text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "네",
+        cancelButtonText: "아니오",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          navigate(`/write/${path}`);
+        }
+      });
     } catch (err) {
       console.log(err);
     }
@@ -31,13 +45,27 @@ function SinglePost() {
       // await axios.delete(`/posts/${path}`, {
       //   data: { username: user.username },
       // });
-      console.log("delete");
-      dispatch(
-        deletePost({
-          id: path,
-        })
-      );
-      navigate("/");
+      // console.log("delete");
+      Swal.fire({
+        title: "글을 삭제하겠습니까?",
+        // text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "네",
+        cancelButtonText: "아니오",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          dispatch(
+            deletePost({
+              id: path,
+            })
+          );
+          navigate("/");
+          toast.success("글이 삭제되었습니다.");
+        }
+      });
     } catch (err) {
       console.log(err);
     }
