@@ -14,8 +14,17 @@ function SinglePost() {
   const [post, setPost] = useState("");
   const { user } = useSelector((state) => state.auth);
 
-
   const dispatch = useDispatch();
+
+  const onEditHandler = async () => {
+    try {
+      console.log("edit");
+      // dispatch 만들기
+      navigate(`/write/${path}`);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   const onDeleteHandler = async () => {
     try {
@@ -53,7 +62,10 @@ function SinglePost() {
           {post.title}
           {post.username === user?.username && (
             <div className="singlePostEdit">
-              <i className="singlePostIcon fa-regular fa-pen-to-square"></i>{" "}
+              <i
+                className="singlePostIcon fa-regular fa-pen-to-square"
+                onClick={onEditHandler}
+              ></i>{" "}
               <i
                 className="singlePostIcon fa-regular fa-trash-can"
                 onClick={onDeleteHandler}
