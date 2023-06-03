@@ -4,9 +4,9 @@ const Post = require("../models/Post");
 const { auth } = require("../middlewares/auth");
 
 // CREATE POST
-router.post("/", async (req, res) => {
+router.post("/", auth, async (req, res) => {
   try {
-    const user = await User.findOne({ username: req.body.username });
+    const user = await User.findOne({ username: req.user.username });
     if (!user) throw new Error("회원만 글을 등록할 수 있습니다.");
     const post = await new Post(req.body).save();
     res.status(200).json(post);
@@ -17,11 +17,11 @@ router.post("/", async (req, res) => {
 });
 
 // UPDATE POST
-router.put("/:id", async (req, res) => {
+router.put("/:id", auth, async (req, res) => {
   try {
     const post = await Post.findById(req.params.id);
-    // console.log("수정 완성");
-    if (post.username === req.body.username) {
+    console.log("수정 완성");
+    if (post.username === req.user.username) {
       const updatedPost = await Post.findByIdAndUpdate(
         req.params.id,
         {
