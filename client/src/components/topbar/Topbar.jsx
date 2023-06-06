@@ -12,7 +12,7 @@ function Topbar() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
-  // console.log(user);
+  console.log("user :", user);
 
   const onSearchHandler = (e) => {
     // setSearchKeyword(e.target.value);
@@ -69,10 +69,12 @@ function Topbar() {
       </div>
       <div className="topRight">
         {user ? (
-          <img
-            className="profileImg"
-            src="https://file.mk.co.kr/meet/neds/2020/02/image_readtop_2020_212162_15829575334105957.jpg"
-          />
+          <Link to={`/user/${user._id}`}>
+            <img
+              className="profileImg"
+              src={`http://localhost:5000/images/${user.profilePicture}`}
+            />
+          </Link>
         ) : (
           <ul className="topBarList">
             <Link className="link" to="/login">

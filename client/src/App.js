@@ -7,6 +7,7 @@ import Login from "./pages/login/Login";
 import Register from "./pages/register/Register";
 import SinglePost from "./pages/singlePost/SinglePost";
 import Write from "./pages/write/Write";
+import Profile from "./pages/profile/Profile";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./styles/reset.css";
@@ -28,6 +29,7 @@ function App() {
         <Route path="/write/:id" element={user ? <Edit /> : <Register />} />
         <Route path="/post/:postId" element={<SinglePost />} />
         <Route path="/about" element={<About />} />
+        <Route path="/user/:id" element={<Profile />} />
       </Routes>
     </>
   );
