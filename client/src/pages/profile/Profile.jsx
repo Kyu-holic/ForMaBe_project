@@ -4,18 +4,30 @@ import { useSelector } from "react-redux";
 
 function Profile() {
   const { user } = useSelector((state) => state.auth);
+  console.log("user :", user);
 
   return (
     <ProfileBlock>
       <div className="profile">
         <div className="profile-left">
-          <img
-            className="profile-picture"
-            src={`http://localhost:5000/images/${user.profilePicture}`}
-          />
-          <div className="profile-name">{user.name}</div>
+          <div className="profile-summary">
+            <img
+              className="profile-picture"
+              src={`http://localhost:5000/images/${user.profilePicture}`}
+            />
+            <div className="profile-name">{user.name}</div>
+            <div className="profile-email">{user.email}</div>
+          </div>
         </div>
-        <div className="profile-right"></div>
+        <div className="profile-right">
+          <div className="profile-box">
+            <div className="profile-title">내 프로필</div>
+            <ul className="profile-detail">
+              <li>{user.username}</li>
+              <li>{user.email}</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </ProfileBlock>
   );
@@ -37,17 +49,29 @@ const ProfileBlock = styled.div`
 
   .profile-left {
     flex: 3;
-    border: 1px solid red;
+    /* border: 1px solid red; */
     height: 100%;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+
+  .profile-summary {
+    /* border: 1px solid blue; */
     flex-direction: column;
+    width: 100%;
+    height: 24.8rem;
+    text-align: center;
+    box-shadow: 0.5rem 0.5rem 1rem #777;
+    padding: 3rem;
+    box-sizing: border-box;
+    border-radius: 2rem;
   }
 
   .profile-picture {
-    width: 30rem;
-    height: 30rem;
+    width: 10rem;
+    height: 10rem;
     border-radius: 50%;
     object-fit: cover;
   }
@@ -58,10 +82,52 @@ const ProfileBlock = styled.div`
     font-weight: bold;
   }
 
+  .profile-email {
+    margin-top: 1rem;
+    font-size: 1.5rem;
+    color: gray;
+  }
+
   .profile-right {
     flex: 6;
     height: 100%;
-    border: 1px solid orange;
+    /* border: 1px solid orange; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .profile-box {
+    display: block;
+    width: 50rem;
+  }
+
+  .profile-title {
+    position: relative;
+    display: block;
+    padding: 15px 38px 13px 18px;
+    border-radius: 12px 12px 0 0;
+    background-image: linear-gradient(98deg, #03c75a, #49c6dd);
+    font-size: 2rem;
+  }
+
+  .profile-detail {
+    padding: 0 17px;
+    border-radius: 0 0 1.2rem 1.2rem;
+    box-shadow: 1px 1px 10px 0 rgba(72, 75, 108, 0.08);
+    border: solid 1px #e3e9ed;
+    background-color: #fff;
+    box-sizing: border-box;
+    height: 20rem;
+  }
+
+  .profile-detail li {
+    font-size: 1.6rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .profile-detail li:nth-child(1) {
+    margin-top: 1.5rem;
   }
 
   @media (max-width: 800px) {
