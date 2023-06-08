@@ -23,8 +23,14 @@ function Profile() {
           <div className="profile-box">
             <div className="profile-title">내 프로필</div>
             <ul className="profile-detail">
-              <li>{user.username}</li>
-              <li>{user.email}</li>
+              <li>
+                <i className="fa-regular fa-user profile-icon"></i>
+                {user.username}
+              </li>
+              <li>
+                <i className="fa-regular fa-envelope profile-icon"></i>
+                {user.email}
+              </li>
             </ul>
           </div>
         </div>
@@ -109,13 +115,20 @@ const ProfileBlock = styled.div`
     border-radius: 12px 12px 0 0;
     background-image: linear-gradient(98deg, #03c75a, #49c6dd);
     font-size: 2rem;
+    font-weight: bold;
+    color: white;
+  }
+
+  .profile-icon {
+    margin-right: 1rem;
+    color: gray;
   }
 
   .profile-detail {
     padding: 0 17px;
     border-radius: 0 0 1.2rem 1.2rem;
     box-shadow: 1px 1px 10px 0 rgba(72, 75, 108, 0.08);
-    border: solid 1px #e3e9ed;
+    border: solid 1px #c9cdcf;
     background-color: #fff;
     box-sizing: border-box;
     height: 20rem;
@@ -124,6 +137,8 @@ const ProfileBlock = styled.div`
   .profile-detail li {
     font-size: 1.6rem;
     margin-bottom: 1.5rem;
+    border-bottom: 1px solid #d4d2d2;
+    padding-bottom: 1rem;
   }
 
   .profile-detail li:nth-child(1) {
