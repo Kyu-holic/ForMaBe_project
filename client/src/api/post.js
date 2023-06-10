@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const getPostsBySearchText = async (searchText) => {
-  const res = await axios.get(`/posts`, {
+  const res = await axios.get(`/api/posts`, {
     params: { keyword: searchText },
   });
   return res.data;
@@ -9,7 +9,7 @@ export const getPostsBySearchText = async (searchText) => {
 
 export const deletePost = async (path, user) => {
   console.log("path", path);
-  await axios.delete(`/posts/${path}`, {
+  await axios.delete(`/api/posts/${path}`, {
     data: { username: user.username },
   });
 };

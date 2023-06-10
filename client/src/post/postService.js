@@ -1,8 +1,8 @@
 import axios from "axios";
 import { getPostsBySearchText } from "../api/post";
 
-const DELETE_URL = "/posts/";
-const UPLOAD_URL = "/posts";
+const DELETE_URL = "/api/posts/";
+const UPLOAD_URL = "/api/posts";
 
 //delete post
 const postDelete = async (postData) => {

@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const REGISTER_URL = "/users/register";
-const LOGIN_URL = "/users/login";
+const REGISTER_URL = "/api/users/register";
+const LOGIN_URL = "/api/users/login";
 
 // Register user
 const register = async (userData) => {

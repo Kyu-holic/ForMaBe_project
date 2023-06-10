@@ -36,7 +36,7 @@ function Write() {
       const formData = new FormData();
       formData.append("file", file);
       try {
-        const res = await axios.post("/images/upload", formData);
+        const res = await axios.post("/api/images/upload", formData);
         newPost.photo = res.data.key;
         console.log({ res: res });
       } catch (err) {
@@ -56,7 +56,7 @@ function Write() {
         cancelButtonText: "아니오, 더 작성할께요.",
       }).then((result) => {
         if (result.isConfirmed) {
-          axios.post("/posts", newPost);
+          axios.post("/api/posts", newPost);
           Swal.fire("글이 등록되었습니다.");
           navigate("/");
         }

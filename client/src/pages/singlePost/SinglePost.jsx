@@ -73,7 +73,7 @@ function SinglePost() {
 
   useEffect(() => {
     const getPost = async () => {
-      const res = await axios.get(`/posts/${path}`);
+      const res = await axios.get(`/api/posts/${path}`);
       setPost(res.data);
     };
     getPost();
@@ -84,7 +84,7 @@ function SinglePost() {
       <div className="singlePostWrapper">
         <img
           className="singlePostImg"
-          src={`http://localhost:5000/images/${post.photo}`}
+          src={`/images/${post.photo}`}
         />
         <h1 className="singlePostTitle">
           {post.title}

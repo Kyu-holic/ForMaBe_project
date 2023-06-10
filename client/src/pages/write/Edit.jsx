@@ -40,7 +40,7 @@ function Edit() {
       const formData = new FormData();
       formData.append("file", file);
       try {
-        const res = await axios.post("/images/upload", formData);
+        const res = await axios.post("/api/images/upload", formData);
         editPost.photo = res.data.key;
         console.log({ res: res });
       } catch (err) {
@@ -59,7 +59,7 @@ function Edit() {
         cancelButtonText: "아니오",
       }).then((result) => {
         if (result.isConfirmed) {
-          axios.put(`/posts/${id}`, editPost);
+          axios.put(`/api/posts/${id}`, editPost);
           Swal.fire("글이 수정되었습니다.");
           navigate("/");
         }
@@ -79,7 +79,7 @@ function Edit() {
 
   useEffect(() => {
     const getPost = async () => {
-      const res = await axios.get(`/posts/${id}`);
+      const res = await axios.get(`/api/posts/${id}`);
       console.log(res);
       setTitle(res.data.title);
       setDesc(res.data.desc);

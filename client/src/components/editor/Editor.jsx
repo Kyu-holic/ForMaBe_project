@@ -23,13 +23,13 @@ function WriteEditor({ setDesc, value }) {
     formData.append("file", blob);
 
     const url = await axios.post(
-      `http://localhost:3000/images/upload`,
+      `/api/images/upload`,
       formData,
       {
         headers: { "Content-type": "multipart/formData" },
       }
     );
-    callback(`http://localhost:5000/images/${url.data.key}`);
+    callback(`/images/${url.data.key}`);
     return false;
   };
 
