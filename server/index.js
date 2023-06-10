@@ -10,7 +10,7 @@ const multer = require("multer");
 const Image = require("./models/Image");
 const { v4: uuid } = require("uuid");
 const mime = require("mime-types");
-const cookieParser = require("cookie-parser")
+const cookieParser = require("cookie-parser");
 
 dotenv.config();
 
@@ -50,8 +50,9 @@ mongoose
     });
 
     app.use(express.json());
-    app.use(cookieParser())
+    app.use(cookieParser());
     app.use("/images", express.static("images"));
+    app.use("/", express.static("build"));
     // app.use("/api/auth", authRoute);
     app.use("/api/users", userRoute);
     app.use("/api/posts", postRoute);
