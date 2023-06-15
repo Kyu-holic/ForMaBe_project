@@ -13,6 +13,7 @@ import "react-toastify/dist/ReactToastify.css";
 import "./styles/reset.css";
 import { useSelector } from "react-redux";
 import Edit from "./pages/write/Edit";
+import NewRegister from "./pages/register/NewRegister";
 
 function App() {
   const { user } = useSelector((state) => state.auth);
@@ -23,6 +24,9 @@ function App() {
       <Topbar />
       <Routes>
         <Route path="/" element={<Home />} />
+        {/* 나중에 지울 페이지 */}
+        <Route path="/tempregister" element={<NewRegister />} />
+
         <Route path="/register" element={user ? <Home /> : <Register />} />
         <Route path="/login" element={user ? <Home /> : <Login />} />
         <Route path="/write" element={user ? <Write /> : <Register />} />

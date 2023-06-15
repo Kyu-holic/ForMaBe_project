@@ -7,9 +7,6 @@ import { register, reset } from "../../auth/authSlice";
 import styled from "@emotion/styled";
 
 function Register() {
-  // const [username, setUsername] = useState("");
-  // const [password, setPassword] = useState("");
-  // const [email, setEmail] = useState("");
 
   const [formData, setFormData] = useState({
     username: "",
@@ -135,7 +132,7 @@ function Register() {
 }
 
 const RegisterBlock = styled.div`
-  height: calc(100vh - 5rem);
+  height: calc(100vh - 6rem);
   display: flex;
   flex-direction: column;
   justify-content: center;
