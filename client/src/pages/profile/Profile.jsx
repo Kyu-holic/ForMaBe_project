@@ -15,8 +15,8 @@ function Profile() {
               className="profile-picture"
               src={`http://localhost:5000/images/${user.profilePicture}`}
             />
-            <div className="profile-name">{user.name}</div>
-            <div className="profile-email">{user.email}</div>
+            <div className="profile-name">{user.username}</div>
+            <div className="profile-email">{user.nickname}</div>
           </div>
         </div>
         <div className="profile-right">
