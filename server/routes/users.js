@@ -13,6 +13,8 @@ router.post("/register", async (req, res) => {
       email: req.body.email,
       name: req.body.name,
       profilePicture: req.body.profilePicture,
+      nickname: req.body.nickname,
+      userid: req.body.userid,
       hashedPassword,
     }).save();
     res.status(200).json({
