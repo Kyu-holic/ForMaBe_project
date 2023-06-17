@@ -17,10 +17,7 @@ router.post("/register", async (req, res) => {
       userid: req.body.userid,
       hashedPassword,
     }).save();
-    res.status(200).json({
-      message: "회원가입 성공",
-      user,
-    });
+    res.status(200).json({ user, message: "회원가입 성공" });
   } catch (err) {
     console.log(err);
     res.status(400).json({ err: err.message });
@@ -35,7 +32,10 @@ router.post("/login", async (req, res) => {
     const isMatch = await compare(req.body.password, user.hashedPassword);
     if (!isMatch) throw new Error("비밀번호가 틀렸습니다.");
     // 비밀번호까지 맞다면 토큰 생성
+    console.log("user :", user);
     user.generateToken((err, user) => {
+      console.log("user:", user);
+      console.log("err:", err);
       const { hashedPassword, ...others } = user._doc;
       if (err) return res.status(400).send(err);
       res.cookie("x_auth", user.token).status(200).json(others);

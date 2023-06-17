@@ -7,12 +7,20 @@ import { toast } from "react-toastify";
 import axios from "axios";
 
 function Register() {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const [formData, setFormData] = useState({
+    userid: "",
+    nickname: "",
+    username: "",
+    password: "",
+    email: "",
+  });
+
   const [image, setImage] = useState(null);
   const [file, setFile] = useState(null);
   const [imgSrc, setImgSrc] = useState(null);
-
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
 
   const { user, isLoading, isError, isSuccess, message } = useSelector(
     (state) => state.auth
@@ -24,18 +32,10 @@ function Register() {
     }
     if (isSuccess || user) {
       navigate("/");
-      toast.success(`반갑습니다 ${user.username}님! 회원가입 되었습니다.`);
+      // toast.success(`반갑습니다 ${user.username}님! 회원가입 되었습니다.`);
     }
     dispatch(reset());
   }, [user, isError, isSuccess, message, navigate, dispatch]);
-
-  const [formData, setFormData] = useState({
-    userid: "",
-    nickname: "",
-    username: "",
-    password: "",
-    email: "",
-  });
 
   const { userid, nickname, username, password, email } = formData;
 
@@ -145,7 +145,7 @@ function Register() {
         </div>{" "}
         <div className="register-list">
           <label className="register-info">프로필 사진</label>
-          <label htmlFor="profile-input">
+          <label htmlFor="profile-input" className="profile-input1">
             {file ? (
               <div></div>
             ) : (
@@ -210,10 +210,11 @@ const RegisterBlock = styled.div`
 
   .register-list {
     display: flex;
-    /* width: 100%; */
+    width: 40rem;
     margin-bottom: 2rem;
     padding-bottom: 1rem;
     border-bottom: 1px solid rgba(0, 0, 0, 0.164);
+    justify-content: space-between;
   }
 
   .register-list:nth-child(1) {
@@ -223,7 +224,7 @@ const RegisterBlock = styled.div`
   .register-info {
     display: flex;
     align-items: center;
-    width: 10rem;
+    min-width: 10rem;
     height: 4rem;
     font-weight: bold;
     font-size: 1.4rem;
@@ -233,7 +234,6 @@ const RegisterBlock = styled.div`
     display: flex;
     align-items: center;
     width: 25rem;
-    margin-left: 7rem;
     border: 1px solid rgba(0, 0, 0, 0.164);
     border-radius: 1.1rem;
     padding: 1rem;
@@ -250,9 +250,14 @@ const RegisterBlock = styled.div`
 
   .preview-image {
     display: flex;
+    flex: 1;
     border: 1px solid;
     height: 20rem;
     object-fit: cover;
+  }
+
+  .profile-image{
+    width: 100%;
   }
 
   .upload-profile-img {

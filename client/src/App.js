@@ -4,7 +4,7 @@ import Topbar from "./components/topbar/Topbar";
 import About from "./pages/about/About";
 import Home from "./pages/home/Home";
 import Login from "./pages/login/Login";
-import Register from "./pages/register/OldRegister";
+import Register from "./pages/register/OldRegister.jsx(예전화면)";
 import SinglePost from "./pages/singlePost/SinglePost";
 import Write from "./pages/write/Write";
 import Profile from "./pages/profile/Profile";

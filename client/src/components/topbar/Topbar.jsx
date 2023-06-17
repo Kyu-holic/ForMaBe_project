@@ -72,7 +72,7 @@ function Topbar() {
           <Link to={`/user/${user._id}`}>
             <img
               className="profileImg"
-              src={`http://localhost:5000/images/${user.profilePicture}`}
+              src={`/images/${user.profilePicture}`}
             />
           </Link>
         ) : (

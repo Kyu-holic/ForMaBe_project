@@ -5,4 +5,3 @@ npm run build
 mv build ../server/build
 cd ../server
 npm install
-npm start

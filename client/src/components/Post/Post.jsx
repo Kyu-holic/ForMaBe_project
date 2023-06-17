@@ -13,7 +13,7 @@ function Post({ searchedPost }) {
     <PostBlock>
       <Link to={`/post/${searchedPost._id}`} className="link">
         <img
-          src={`http://localhost:5000/images/${searchedPost.photo}`}
+          src={`/images/${searchedPost.photo}`}
           className="postImg"
         />
         <div className="postInfo">
