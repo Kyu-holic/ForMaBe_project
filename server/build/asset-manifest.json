@@ -1,14 +1,15 @@
 {
   "files": {
     "main.css": "/static/css/main.2b9a7027.css",
-    "main.js": "/static/js/main.be9d113a.js",
+    "main.js": "/static/js/main.70a141bd.js",
     "static/media/index.cjs": "/static/media/index.c05687ef19f5bac24939.cjs",
+    "static/media/OldRegister.jsx(예전화면)": "/static/media/OldRegister.6ff43e071b31085f97bd.jsx(예전화면)",
     "index.html": "/index.html",
     "main.2b9a7027.css.map": "/static/css/main.2b9a7027.css.map",
-    "main.be9d113a.js.map": "/static/js/main.be9d113a.js.map"
+    "main.70a141bd.js.map": "/static/js/main.70a141bd.js.map"
   },
   "entrypoints": [
     "static/css/main.2b9a7027.css",
-    "static/js/main.be9d113a.js"
+    "static/js/main.70a141bd.js"
   ]
 }
